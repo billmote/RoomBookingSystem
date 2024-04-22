@@ -1,6 +1,7 @@
 package com.booker.database;
 
 import java.sql.*;
+import java.net.URISyntaxException;
 
 public class QueryExecutor {
     /**
@@ -24,7 +25,13 @@ public class QueryExecutor {
      * @see ConnectionPool
      */
     private Connection getConnection() {
-        return ConnectionPool.getInstance().getConnection();
+        Connection connection = null;
+        try {
+            connection = ConnectionPool.getInstance().getConnection();
+        } catch(Exception e) {
+            // no-op
+        }
+        return connection;
     }
 
     private QueryExecutor() {
