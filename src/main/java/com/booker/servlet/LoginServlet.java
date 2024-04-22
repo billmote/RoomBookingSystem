@@ -37,7 +37,12 @@ public class LoginServlet extends HttpServlet {
         String password = request.getParameter("password");
 
         // handle user authentication
-        User user = User.authenticate(username, password);
+        User user = null;
+        try {
+            user = User.authenticate(username, password);
+        } catch (Exception e) {
+            user = User.authenticate(username, Integer.toString(password.hashCode()));
+        }
         if (user != null) {
             if (AppSession.hasRole(AppSession.CUSTOMER_ROLE)) {
                 // redirect customer to hotel list page

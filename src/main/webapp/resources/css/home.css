@@ -100,3 +100,37 @@ table.table .form-control .error-input {
 table.table td .add {
   display: none;
 }
+
+.container {
+  width: 100%;
+  /* Use 100% of the screen width */
+  max-width: 1200px;
+  /* Maximum container width */
+  margin: 0 auto;
+  /* Center the container */
+}
+
+/* Base styles */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+/* Media queries for responsive breakpoints */
+@media only screen and (min-width: 600px) {
+  .column {
+    width: 50%;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .column {
+    width: 33.33%;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .column {
+    width: 25%;
+  }
+}

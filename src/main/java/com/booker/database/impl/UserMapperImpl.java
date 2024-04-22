@@ -6,6 +6,9 @@ import com.booker.domain.BookerObj;
 import com.booker.domain.Customer;
 import com.booker.domain.Staff;
 import com.booker.domain.User;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -67,6 +70,10 @@ public class UserMapperImpl implements DataMapper {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public void addUser(Customer customer) throws SQLException {
+        executor.executeStatement("INSERT INTO users (version, username, password, role) VALUES (?, ?, ?)", 1, customer.getUsername(), customer.getPassword(), "customer");
     }
 
     private User createEntity(ResultSet rs) {
